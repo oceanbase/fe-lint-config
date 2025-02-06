@@ -1,0 +1,88 @@
+{
+  "name": "@oceanbase/lint-config",
+  "version": "1.0.0-beta.0",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./src/*"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "@eslint/js": "^9.15.0",
+    "@typescript-eslint/parser": "^8.15.0",
+    "eslint": "^9.15.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-flat-config-utils": "^0.4.0",
+    "eslint-import-resolver-typescript": "^3.6.3",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "typescript-eslint": "^8.17.0",
+    "stylelint": "^16.11.0",
+    "stylelint-config-recommended-less": "^3.0.1",
+    "stylelint-config-standard": "^36.0.1"
+  },
+  "dependencies": {
+    "@eslint/js": "^9.15.0",
+    "@typescript-eslint/parser": "^8.15.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-flat-config-utils": "^0.4.0",
+    "eslint-import-resolver-typescript": "^3.6.3",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "stylelint-config-recommended-less": "^3.0.1",
+    "stylelint-config-standard": "^36.0.1",
+    "typescript-eslint": "^8.17.0"
+  },
+  "devDependencies": {
+    "@eslint/config-inspector": "^0.5.6",
+    "@rollup/plugin-commonjs": "^28.0.1",
+    "@types/eslint": "^9.6.1",
+    "@types/node": "^22.10.1",
+    "eslint": "^9.16.0",
+    "prettier": "^3.4.2",
+    "rollup": "^4.27.2",
+    "rollup-plugin-dts": "^6.1.1",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "stylelint": "^16.11.0",
+    "typescript": "^5.6.3"
+  },
+  "scripts": {
+    "dev": "rollup -c --watch",
+    "build": "rollup -c",
+    "debug": "eslint --debug",
+    "inspector": "eslint --inspect-config",
+    "lint": "eslint .",
+    "lint:fix": "npm run lint -- --fix",
+    "preview": "npx @eslint/config-inspector --config eslint.config.mjs",
+    "build:inspector": "pnpm build && npx @eslint/config-inspector build"
+  },
+  "engines": {
+    "install-node": "v21"
+  },
+  "keywords": [],
+  "author": "hetao92 <hetao.daily@gmail.com>",
+  "license": "MIT",
+  "description": "oceanbase lint config",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oceanbase/fe-lint-config.git"
+  }
+}
