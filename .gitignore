@@ -4,3 +4,4 @@
 .vscode
 package-lock.json
 .node
+git-pre-push-hook-warn.log
