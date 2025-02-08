@@ -1,39 +1,43 @@
-# OceanBase lint 规范
+# OceanBase Lint Standards
 
-- [Eslint 配置说明](#eslint)
-- [Stylelint 配置说明](#stylelint)
+English | [中文](./README-zh-CN.md)
 
-# 安装
+- [ESLint Configuration Instructions](#eslint)
+- [Stylelint Configuration Instructions](#stylelint)
+
+# Installation
 
 ```bash
+
 tnpm i --save-dev eslint prettier stylelint @oceanbase/lint-config
-
 ```
-# 限制
-- 要求 ESLint v9.5.0+
-- 要求 Node.js (^18.18.0, ^20.9.0, or >=21.1.0) 
 
-# eslint
+# Requirements
+- Requires ESLint v9.5.0+
+- Requires Node.js (^18.18.0, ^20.9.0, or >=21.1.0)
 
-## 已启动插件
-- [eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import)
-- [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react)
-- [eslint-plugin-react-hooks](https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks)
-- [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier)
+# ESLint
+## Enabled Plugins
+- eslint-plugin-import
+- eslint-plugin-react
+- eslint-plugin-react-hooks
+- eslint-plugin-prettier
 
-## 使用
-在项目根目录创建 `eslint.config.mjs` 文件
+## Usage
+Create an eslint.config.mjs file in the root directory of your project:
 
 ```js
+
+
 // eslint.config.mjs
 import { OBEslintCfg } from '@oceanbase/lint-config'
 
 export default OBEslintCfg()
 ```
 
-### 在 `package.json` 中添加脚本
-
+### Add Script to package.json
 ```json
+
 {
   "scripts": {
     "lint": "eslint .",
@@ -42,51 +46,48 @@ export default OBEslintCfg()
 }
 ```
 
-### Lint 提交
+### Lint on Commit
 
-在 `package.json` 中添加以下内容以在每次提交前执行 lint 和自动修复
+Add the following to package.json to run linting and auto-fix on each commit:
+
 ```bash
-tnpm i -save-dev lint-staged husky
+tnpm i --save-dev lint-staged husky
 ```
-
 ```json
 {
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "husky install"
   },
- "lint-staged": {
+  "lint-staged": {
     "./src/**/*.{js,jsx,ts,tsx}": [
       "npx prettier --write",
       "npm run lint:fix"
-    ],
-  },
+    ]
+  }
 }
 ```
-
-## 自定义
+## Customization
 
 ```js
 // eslint.config.js
 import OBEslintCfg from '@oceanbase/lint-config'
 
 export default OBEslintCfg({
-  // 配置默认插件
-  // 以下模块默认开启，可以通过配置 `false` 关闭
+  // Default OBEslintCfg settings
+  // The following modules are enabled by default and can be disabled by configuring `false`
   typescript: true,
   prettier: true,
   import: true,
   react: true,
-
-  // `.eslintignore` 在 flat config 不生效，需要手动配置 ignores
-  // 以下为默认忽略的文件夹
+  // `.eslintignore` does not work in flat config, you need to manually configure ignores
+  // The following are the folders ignored by default
   ignores: [
-    '**/fixtures',
+    '**/fixtures'
     // ...globs
   ]
 })
 ```
-
-`OBEslintCfg` 也可以接受任意数量的自定义配置覆盖参数：
+`OBEslintCfg` can also accept any number of custom configuration overrides:
 
 ```js
 // eslint.config.js
@@ -94,24 +95,24 @@ import OBEslintCfg from '@oceanbase/lint-config'
 
 export default OBEslintCfg(
   {
-    // OBEslintCfg 配置
+    // Default OBEslintCfg settings
   },
-  // 从第二个参数开始，使用 ESLint 的 Flat Configs 提供任意个自定义配置
   {
+    // Starting from the second parameter, use ESLint's Flat Configs to provide any custom configuration
     ignores: ['**/test'],
     files: ['**/*.ts'],
     rules: {
-      'no-unused-vars': ['error', { varsIgnorePattern: '^_' }],
-    },
+      'no-unused-vars': ['error', { varsIgnorePattern: '^_' }]
+    }
   },
   {
-    rules: {},
-  },
+    rules: {}
+  }
 )
 ```
 
-## 规则覆盖
-所有规则只在特定模块下配置，当然也支持在第一个参数之后的配置中覆盖默认配置
+## Rule Overrides
+Rules can be configured per module and can also be overridden with custom settings:
 
 ```js
 // eslint.config.js
@@ -119,78 +120,72 @@ import OBEslintCfg from '@oceanbase/lint-config'
 
 export default OBEslintCfg(
   {
-    // typescript、react、prettier、import 等默认模块均支持这样覆盖规则
+    // Typescript, react, prettier, import and other default modules all support overriding rules in this way
     typescript: {
       overrides: {
-        '@typescript-eslint/no-unused-vars': 'off',
-      },
+        '@typescript-eslint/no-unused-vars': 'off'
+      }
     }
   },
   {
-    // 也可以在后续配置对象内覆盖
+    // You can also overwrite in subsequent configuration objects
     files: ['**/*.vue'],
     rules: {
-      'vue/operator-linebreak': ['error', 'before'],
-    },
-  },
+      'vue/operator-linebreak': ['error', 'before']
+    }
+  }
 )
 ```
 
-## 基于 TypeScript 的类型信息规则
-
-你可以通过配置 tsconfigPath 参数来开启基于 TypeScript 的[类型信息规则](https://typescript-eslint.io/linting/typed-linting/)
-
+## TypeScript Type Information Rules
+You can enable TypeScript [type information rules]((https://typescript-eslint.io/linting/typed-linting/)) by setting the tsconfigPath parameter:
 > [!NOTE]
-> 类型信息规则检查相对比较严格，可依据各自项目情况判断是否开启
-> 此外，开启类型信息规则对校验性能会有影响，视项目仓库大小而定
+> Type information rule checking is relatively strict, and you can decide whether to enable it based on your project situation
+> In addition, enabling type information rules will have an impact on verification performance, depending on the size of the project repository
 
 ```js
 import OBEslintCfg from '@oceanbase/lint-config'
 
 export default OBEslintCfg({
   typescript: {
-    tsconfigPath: 'tsconfig.json',
-  },
+    tsconfigPath: 'tsconfig.json'
+  }
 })
 ```
 
+## Adding New Rules
 
-## 添加新规则
+1. Add rules in src/rules.
+2. Create a configuration file in src/configs and add the rule.
+3. In src/factory.ts, define usage methods and expose configuration options.
 
-1. 在 `src/rules` 下添加规则
-2. 在 `src/configs` 下创建配置文件，并将规则加入配置
-3. 在 `src/factory.ts` 中添加使用方式，暴露一些配置参数
+## View Enabled Rules
+Run the following command in the root directory:
 
-## 查看已启用的规则
-
-以下命令需要在项目根目录下执行
 ```bash
 npx @eslint/config-inspector
 ```
 
-## IDE Support (auto fix on save)
-## IDE 支持 (保存时自动修复)
-
+## IDE Support (Auto-Fix on Save)
 <details>
-<summary>🟦 VS Code 支持</summary>
+<summary>🟦 VS Code Support</summary>
 
 <br>
 
-安装 VS Code ESLint [插件](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+Install the VS Code ESLint [extension]((https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint))
 
-在 `.vscode/settings.json` 中添加以下配置:
+Add the following to `.vscode/settings.json`:
+
 ```jsonc
 {
   // Disable the default formatter, use eslint instead
   "prettier.enable": false,
   "editor.formatOnSave": false,
-
   // Auto fix
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
     "source.organizeImports": "never"
   },
-
   // Enable eslint for all supported languages
   "eslint.validate": [
     "javascript",
@@ -217,20 +212,17 @@ npx @eslint/config-inspector
   ]
 }
 ```
-
 </details>
 
-# stylelint
 
-## 已启用插件
-
+# Stylelint
+## Enabled Plugins
 - [stylelint-config-recommended-less](https://github.com/stylelint-less/stylelint-less)
 - [stylelint-config-standard](https://github.com/stylelint/stylelint-config-standard)
 
-## 使用
+### Usage
 
-### 使用
-在项目根目录创建 `.stylelintrc.mjs` 文件
+Create a `.stylelintrc.mjs` file in your project root directory:
 
 ```js
 // .stylelintrc.mjs
@@ -239,8 +231,7 @@ import { OBStylelintCfg } from '@oceanbase/lint-config'
 export default OBStylelintCfg()
 ```
 
-### 在 `package.json` 中添加脚本
-
+### Add Script to `package.json`
 ```json
 {
   "scripts": {
@@ -250,35 +241,33 @@ export default OBStylelintCfg()
 }
 ```
 
-### Lint 提交
-
-在 `package.json` 中添加以下内容以在每次提交前执行 lint 和自动修复
+### Lint on Commit
+Add the following to `package.json` to run stylelinting and auto-fix on each commit:
 
 ```json
 {
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "husky install"
   },
- "lint-staged": {
+  "lint-staged": {
     "./src/**/*.{less,css}": [
       "npx stylelint --fix"
     ]
-  },
+  }
 }
 ```
 
-## 规则覆盖
-
-stylelint 支持添加任意个自定义插件 extends 以及 rules 覆盖
+## Rule Overrides
+Stylelint allows adding custom plugins and rule overrides:
 
 ```js
 // .stylelintrc.mjs
 import { OBStylelintCfg } from '@oceanbase/lint-config'
 
 export default OBStylelintCfg({
-  extends: ['xxx插件'],
+  extends: ['additional-plugin'],
   rules: {
-    'selector-class-pattern': null,
+    'selector-class-pattern': null
   }
 })
 ```
