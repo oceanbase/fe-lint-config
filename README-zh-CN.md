@@ -8,7 +8,7 @@
 # 安装
 
 ```bash
-tnpm i --save-dev eslint prettier stylelint @oceanbase/lint-config
+npm i --save-dev eslint prettier stylelint @oceanbase/lint-config
 
 ```
 # 限制
@@ -48,7 +48,7 @@ export default OBEslintCfg()
 
 在 `package.json` 中添加以下内容以在每次提交前执行 lint 和自动修复
 ```bash
-tnpm i -save-dev lint-staged husky
+npm i -save-dev lint-staged husky
 ```
 
 ```json
