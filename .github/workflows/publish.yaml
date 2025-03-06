@@ -25,6 +25,6 @@ jobs:
       run: npm run build  # 根据你项目的构建命令调整
 
     - name: Publish package
-      run: npm publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}  # 需要在 GitHub Secrets 中配置 NPM_TOKEN
+      uses: JS-DevTools/npm-publish@v3
+      with:
+        token: ${{ secrets.NPM_TOKEN }}
