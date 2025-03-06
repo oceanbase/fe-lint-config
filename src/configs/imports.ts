@@ -1,6 +1,5 @@
 import importPlugin from 'eslint-plugin-import';
 
-import { GLOB_SRC, GLOB_TS, GLOB_TSX } from '../globs';
 import type { OptionsOverrides, TypedFlatConfigItem } from '../types';
 
 export function imports(options: OptionsOverrides = {}): TypedFlatConfigItem[] {
@@ -12,9 +11,9 @@ export function imports(options: OptionsOverrides = {}): TypedFlatConfigItem[] {
       ...importPlugin.flatConfigs.typescript,
       settings: {
         'import/parsers': {
-          '@typescript-eslint/parser': [GLOB_TSX, GLOB_TS],
+          '@typescript-eslint/parser': ['.ts', '.tsx'],
         },
-        'import/extensions': [GLOB_SRC, GLOB_TSX, GLOB_TS],
+        'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
         'import/resolver': {
           typescript: {
             alwaysTryTypes: true, // always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`

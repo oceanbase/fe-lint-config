@@ -9,7 +9,7 @@ English | [中文](./README-zh-CN.md)
 
 ```bash
 
-tnpm i --save-dev eslint prettier stylelint @oceanbase/lint-config
+npm i --save-dev eslint prettier stylelint @oceanbase/lint-config
 ```
 
 # Requirements
@@ -51,7 +51,7 @@ export default OBEslintCfg()
 Add the following to package.json to run linting and auto-fix on each commit:
 
 ```bash
-tnpm i --save-dev lint-staged husky
+npm i --save-dev lint-staged husky
 ```
 ```json
 {
