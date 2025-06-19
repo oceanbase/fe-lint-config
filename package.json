@@ -1,6 +1,6 @@
 {
   "name": "@oceanbase/lint-config",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "type": "module",
@@ -32,10 +32,11 @@
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.0.0",
-    "typescript-eslint": "^8.17.0",
-    "stylelint": "^16.11.0",
+    "stylelint": "^16.18.0",
     "stylelint-config-recommended-less": "^3.0.1",
-    "stylelint-config-standard": "^36.0.1"
+    "stylelint-config-standard": "^38.0.0",
+    "stylelint-less": "^3.0.1",
+    "typescript-eslint": "^8.17.0"
   },
   "dependencies": {
     "@eslint/js": "^9.15.0",
@@ -48,7 +49,8 @@
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.0.0",
     "stylelint-config-recommended-less": "^3.0.1",
-    "stylelint-config-standard": "^36.0.1",
+    "stylelint-config-standard": "^38.0.0",
+    "stylelint-less": "^3.0.1",
     "typescript-eslint": "^8.17.0"
   },
   "devDependencies": {
@@ -61,7 +63,7 @@
     "rollup": "^4.27.2",
     "rollup-plugin-dts": "^6.1.1",
     "rollup-plugin-typescript2": "^0.36.0",
-    "stylelint": "^16.11.0",
+    "stylelint": "^16.18.0",
     "typescript": "^5.6.3"
   },
   "scripts": {
