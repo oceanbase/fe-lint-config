@@ -9,7 +9,7 @@ English | [中文](./README-zh-CN.md)
 
 ```bash
 
-npm i --save-dev eslint prettier stylelint @oceanbase/lint-config
+npm i --save-dev @oceanbase/lint-config  eslint prettier stylelint stylelint-config-recommended-less stylelint-config-standard
 ```
 
 # Requirements
