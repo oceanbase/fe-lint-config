@@ -8,7 +8,7 @@
 # 安装
 
 ```bash
-npm i --save-dev eslint prettier stylelint @oceanbase/lint-config
+npm i --save-dev eslint prettier stylelint @oceanbase/lint-config  stylelint-config-recommended-less stylelint-config-standard stylelint-less
 
 ```
 # 限制
