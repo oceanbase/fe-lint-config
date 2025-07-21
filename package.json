@@ -1,6 +1,6 @@
 {
   "name": "@oceanbase/lint-config",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "type": "module",
@@ -48,6 +48,7 @@
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.0.0",
+    "postcss-less": "^6.0.0",
     "stylelint-config-recommended-less": "^3.0.1",
     "stylelint-config-standard": "^38.0.0",
     "stylelint-less": "^3.0.1",
