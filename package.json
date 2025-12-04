@@ -18,8 +18,12 @@
       ]
     }
   },
+  "bin": {
+    "setup": "./bin/setup-lint.js"
+  },
   "files": [
-    "dist"
+    "dist",
+    "bin"
   ],
   "peerDependencies": {
     "@eslint/js": "^9.15.0",
@@ -75,7 +79,8 @@
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
     "preview": "npx @eslint/config-inspector --config eslint.config.mjs",
-    "build:inspector": "pnpm build && npx @eslint/config-inspector build"
+    "build:inspector": "pnpm build && npx @eslint/config-inspector build",
+    "setup": "node bin/setup-lint.js"
   },
   "engines": {
     "install-node": "v21"
