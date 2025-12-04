@@ -2,8 +2,31 @@
 
 中文 | [English](./README.md)
 
+- [快速开始](#快速开始)
 - [Eslint 配置说明](#eslint)
 - [Stylelint 配置说明](#stylelint)
+
+## 快速开始
+
+### 交互式配置向导（推荐）
+
+使用交互式命令快速配置 ESLint 或 Oxlint：
+
+```bash
+npx @oceanbase/lint-config setup-lint
+```
+
+该命令会引导您：
+1. 选择使用 ESLint、Oxlint 或两者共存
+2. 选择项目类型（TypeScript、React）
+3. 选择功能模块（Prettier、Import 规则等）
+4. 自动生成配置文件
+5. 自动安装依赖
+6. 自动添加 npm scripts
+
+详细说明请查看 [bin/README.md](./bin/README.md)
+
+### 手动安装
 
 # 安装
 
