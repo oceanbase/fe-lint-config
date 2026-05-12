@@ -11,12 +11,12 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v6
 
     - name: Set up Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v6
       with:
-        node-version: '21'  # 或者你项目需要的其他版本
+        node-version: '22'  # 或者你项目需要的其他版本
 
     - name: Install dependencies
       run: npm install
