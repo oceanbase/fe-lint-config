@@ -67,21 +67,51 @@
     "typescript-eslint": "^8.17.0"
   },
   "peerDependenciesMeta": {
-    "@eslint/js": { "optional": true },
-    "@typescript-eslint/parser": { "optional": true },
-    "eslint": { "optional": true },
-    "eslint-config-prettier": { "optional": true },
-    "eslint-flat-config-utils": { "optional": true },
-    "eslint-import-resolver-typescript": { "optional": true },
-    "eslint-plugin-import": { "optional": true },
-    "eslint-plugin-prettier": { "optional": true },
-    "eslint-plugin-react": { "optional": true },
-    "eslint-plugin-react-hooks": { "optional": true },
-    "stylelint": { "optional": true },
-    "stylelint-config-recommended-less": { "optional": true },
-    "stylelint-config-standard": { "optional": true },
-    "stylelint-less": { "optional": true },
-    "typescript-eslint": { "optional": true }
+    "@eslint/js": {
+      "optional": true
+    },
+    "@typescript-eslint/parser": {
+      "optional": true
+    },
+    "eslint": {
+      "optional": true
+    },
+    "eslint-config-prettier": {
+      "optional": true
+    },
+    "eslint-flat-config-utils": {
+      "optional": true
+    },
+    "eslint-import-resolver-typescript": {
+      "optional": true
+    },
+    "eslint-plugin-import": {
+      "optional": true
+    },
+    "eslint-plugin-prettier": {
+      "optional": true
+    },
+    "eslint-plugin-react": {
+      "optional": true
+    },
+    "eslint-plugin-react-hooks": {
+      "optional": true
+    },
+    "stylelint": {
+      "optional": true
+    },
+    "stylelint-config-recommended-less": {
+      "optional": true
+    },
+    "stylelint-config-standard": {
+      "optional": true
+    },
+    "stylelint-less": {
+      "optional": true
+    },
+    "typescript-eslint": {
+      "optional": true
+    }
   },
   "dependencies": {
     "@eslint/js": "^9.15.0",
@@ -97,18 +127,19 @@
     "stylelint-config-recommended-less": "^3.0.1",
     "stylelint-config-standard": "^38.0.0",
     "stylelint-less": "^3.0.1",
+    "tslib": "^2.8.1",
     "typescript-eslint": "^8.17.0"
   },
   "devDependencies": {
     "@eslint/config-inspector": "^0.5.6",
     "@rollup/plugin-commonjs": "^28.0.1",
+    "@rollup/plugin-typescript": "^12.3.0",
     "@types/eslint": "^9.6.1",
     "@types/node": "^22.10.1",
     "eslint": "^9.16.0",
     "prettier": "^3.4.2",
     "rollup": "^4.27.2",
     "rollup-plugin-dts": "^6.1.1",
-    "rollup-plugin-typescript2": "^0.36.0",
     "stylelint": "^16.18.0",
     "typescript": "^5.6.3"
   },

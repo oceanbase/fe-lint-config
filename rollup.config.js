@@ -1,7 +1,7 @@
 import commonjs from '@rollup/plugin-commonjs';
 import { defineConfig } from 'rollup';
 import dts from 'rollup-plugin-dts';
-import ts from 'rollup-plugin-typescript2';
+import typescript from '@rollup/plugin-typescript';
 
 // 所有外部依赖
 const externalDeps = [
@@ -40,7 +40,7 @@ const config = defineConfig([
         format: 'cjs',
       },
     ],
-    plugins: [ts(), commonjs()],
+    plugins: [typescript({ noEmit: false, declaration: false, declarationMap: false }), commonjs()],
     external: externalDeps,
   },
 
@@ -57,7 +57,7 @@ const config = defineConfig([
         format: 'cjs',
       },
     ],
-    plugins: [ts(), commonjs()],
+    plugins: [typescript({ noEmit: false, declaration: false, declarationMap: false }), commonjs()],
     external: externalDeps,
   },
 
@@ -70,7 +70,7 @@ const config = defineConfig([
         format: 'cjs',
       },
     ],
-    plugins: [ts(), commonjs()],
+    plugins: [typescript({ noEmit: false, declaration: false, declarationMap: false }), commonjs()],
     external: externalDeps,
   },
 
@@ -83,7 +83,7 @@ const config = defineConfig([
         format: 'cjs',
       },
     ],
-    plugins: [ts(), commonjs()],
+    plugins: [typescript({ noEmit: false, declaration: false, declarationMap: false }), commonjs()],
     external: externalDeps,
   },
 
@@ -100,7 +100,7 @@ const config = defineConfig([
         format: 'cjs',
       },
     ],
-    plugins: [ts(), commonjs()],
+    plugins: [typescript({ noEmit: false, declaration: false, declarationMap: false }), commonjs()],
     external: externalDeps,
   },
 
@@ -114,7 +114,7 @@ const config = defineConfig([
         exports: 'named',
       },
     ],
-    plugins: [ts(), commonjs()],
+    plugins: [typescript({ noEmit: false, declaration: false, declarationMap: false }), commonjs()],
     external: [
       ...externalDeps,
       // 把这些模块也标记为外部，让 require 在运行时加载
@@ -133,7 +133,7 @@ const config = defineConfig([
         banner: `import { createRequire } from 'module';\nconst require = createRequire(import.meta.url);`,
       },
     ],
-    plugins: [ts(), commonjs()],
+    plugins: [typescript({ noEmit: false, declaration: false, declarationMap: false }), commonjs()],
     external: [...externalDeps, './eslintFactory.cjs', './configs.cjs'],
   },
 
